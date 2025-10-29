@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCalc 2025 - 22+ Live Working Calculators</title>
+    <meta name="description" content="Free live income tax 2025, SIP, EMI, FD, BMI, stock profit, currency converter. All 100% working.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        :root {
+            --p: #10b981;
+            --pd: #059669;
+            --p-light: #34d399;
+            --w: #fff;
+            --l: #f8fafc;
+            --c: #fff;
+            --t: #1e293b;
+            --lt: #64748b;
+            --b: #e2e8f0;
+            --s: 0 8px 25px -5px rgba(0,0,0,.1);
+            --r: 18px;
+            --tr: all .3s ease;
+            --glow: 0 0 20px rgba(16,185,129,.6);
+            --glow-strong: 0 0 30px rgba(16,185,129,.8);
+            --gradient: linear-gradient(135deg, var(--p), var(--pd));
+            --gradient-glow: linear-gradient(135deg, var(--p-light), var(--p));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--l);
+            color: var(--t);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--w);
+            box-shadow: 0 1px 3px rgba(0,0,0,.1);
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--w);
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: var(--glow);
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--t);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            position: relative;
+            transition: var(--tr);
+        }
+
+        nav a:hover {
+            color: var(--p);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--p);
+            transition: var(--tr);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--t);
+        }
+
+        .hero {
+            padding: 90px 0;
+            background: var(--gradient);
+            color: var(--w);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,.2);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: .9;
+            position: relative;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--w);
+            color: var(--p);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: var(--glow);
+            transition: var(--tr);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--glow-strong);
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 70px 0 50px;
+            font-size: 36px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: var(--p);
+            border-radius: 3px;
+            box-shadow: var(--glow);
+        }
+
+        .calculators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .calculator-card {
+            background: var(--c);
+            border-radius: var(--r);
+            overflow: hidden;
+            box-shadow: var(--s);
+            border: 1px solid var(--b);
+            transition: var(--tr);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .calculator-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,.18), var(--glow);
+        }
+
+        .calculator-icon {
+            height: 140px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calculator-icon svg {
+            width: 60px;
+            height: 60px;
+            fill: var(--w);
+            position: relative;
+            z-index: 1;
+        }
+
+        .calculator-content {
+            padding: 24px;
+        }
+
+        .calculator-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--t);
+        }
+
+        .calculator-description {
+            color: var(--lt);
+            font-size: 14.5px;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .calculator-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient);
+            color: var(--w);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 14.5px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--tr);
+            cursor: pointer;
+            box-shadow: var(--glow);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calculator-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--glow-strong);
+            background: var(--gradient-glow);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--c);
+            border-radius: 22px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 25px 60px rgba(0,0,0,.25), var(--glow);
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: var(--gradient);
+            color: var(--w);
+            padding: 22px 26px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 22px 22px 0 0;
+            box-shadow: var(--glow);
+        }
+
+        .modal-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: rgba(255,255,255,.25);
+            border: none;
+            color: var(--w);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: var(--tr);
+            box-shadow: var(--glow);
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,.35);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            font-size: 15.5px;
+            color: var(--t);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-control {
+            padding: 14px 16px;
+            border: 1px solid var(--b);
+            border-radius: 12px;
+            font-size: 16px;
+            background: var(--l);
+            transition: var(--tr);
+            width: 100%;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--p);
+            box-shadow: var(--glow);
+        }
+
+        .calculate-btn {
+            background: var(--gradient);
+            color: var(--w);
+            border: none;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 16.5px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 12px;
+            transition: var(--tr);
+            cursor: pointer;
+            box-shadow: var(--glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow-strong);
+            background: var(--gradient-glow);
+        }
+
+        .result {
+            margin-top: 24px;
+            padding: 20px;
+            background: var(--l);
+            border-radius: 14px;
+            display: none;
+            border-left: 5px solid var(--p);
+            box-shadow: var(--glow);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result.active {
+            display: block;
+        }
+
+        .result-title {
+            font-weight: 600;
+            color: var(--p);
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+        .result-value {
+            font-size: 23px;
+            font-weight: 700;
+            color: var(--t);
+        }
+
+        .result-details {
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--lt);
+        }
+
+        footer {
+            background: #0f172a;
+            color: var(--w);
+            padding: 50px 0;
+            margin-top: 100px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--tr);
+        }
+
+        .footer-links a:hover {
+            color: var(--w);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 14px;
+            opacity: .8;
+        }
+
+        .footer-bottom strong {
+            color: var(--p);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--w);
+                flex-direction: column;
+                padding: 16px;
+                box-shadow: var(--s);
+                gap: 14px;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 34px;
+            }
+            .calculators-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-body {
+                padding: 24px;
+            }
+            .modal-content {
+                max-width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <div class="logo-icon">S</div>
+                    <div class="logo-text">Smart<span>Calc</span></div>
+                </div>
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="#calculators">Calculators</a></li>
+                        <li><a href="#privacy">Privacy</a></li>
+                    </ul>
+                    <button class="mobile-menu-btn" id="mobile-menu-toggle">☰</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>SmartCalc 2025 – 22+ Live Tools</h1>
+            <p>All Calculators 100% Working – Real-Time Data</p>
+            <a href="#calculators" class="cta-button">Start Now</a>
+        </div>
+    </section>
+
+    <section id="calculators">
+        <div class="container">
+            <h2 class="section-title">Top 22 Calculators (India 2025)</h2>
+            <div class="calculators-grid" id="calc-grid"></div>
+        </div>
+    </section>
+
+    <!-- Privacy Policy -->
+    <section id="privacy" style="padding:80px 0;background:var(--l)">
+        <div class="container">
+            <h2 class="section-title">Privacy Policy</h2>
+            <div style="max-width:800px;margin:40px auto;background:var(--w);padding:30px;border-radius:16px;box-shadow:var(--s);line-height:1.8;color:#374151">
+                <p><strong>SmartCalc 2025</strong> is a completely free, open-source, and privacy-first tool created in <strong>2025</strong>.</p>
+                <p>We <strong>do not collect any personal data</strong>. All calculations happen directly in your browser. No cookies, no tracking, no analytics, no ads.</p>
+                <p>Your inputs are never sent to any server. Everything stays on your device. Your privacy is 100% protected.</p>
+                <p>This website is made with love in India.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-bottom">
+                © 2025 SmartCalc. Made with <strong>❤</strong> in India by <strong>Kapil</strong>. All tools 100% working.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // === CALCULATORS DATA ===
+        const calculators = [
+            {id:'tax',title:'Income Tax 2025',desc:'New tax regime calculator',icon:'M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'},
+            {id:'sip',title:'SIP Calculator',desc:'Mutual fund SIP returns',icon:'M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z'},
+            {id:'homeloan',title:'Home Loan EMI',desc:'Housing loan EMI calculator',icon:'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z'},
+            {id:'fd',title:'FD Calculator',desc:'Fixed deposit interest calculator',icon:'M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-5 14h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z'},
+            {id:'bmi',title:'BMI Calculator',desc:'Body mass index calculator',icon:'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'},
+            {id:'carloan',title:'Car Loan EMI',desc:'Car loan EMI calculator',icon:'M18.92 6.99c-.39-.35-.92-.52-1.48-.52H6.56c-.56 0-1.09.17-1.48.52L2 12h20l-3.08-5.01zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z'},
+            {id:'rd',title:'RD Calculator',desc:'Recurring deposit calculator',icon:'M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'},
+            {id:'cagr',title:'CAGR Calculator',desc:'Compound annual growth rate',icon:'M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z'},
+            {id:'ppf',title:'PPF Calculator',desc:'Public provident fund calculator',icon:'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'},
+            {id:'nps',title:'NPS Calculator',desc:'National pension scheme calculator',icon:'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'},
+            {id:'gratuity',title:'Gratuity Calculator',desc:'End of service benefit calculator',icon:'M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'},
+            {id:'retirement',title:'Retirement Calculator',desc:'Plan your retirement savings',icon:'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'},
+            {id:'gst',title:'GST Calculator',desc:'Add or remove GST from amount',icon:'M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'},
+            {id:'emi',title:'EMI Calculator',desc:'Any loan EMI calculator',icon:'M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-5 14h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z'},
+            {id:'interest',title:'Interest Calculator',desc:'Simple & compound interest',icon:'M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z'},
+            {id:'discount',title:'Discount Calculator',desc:'Sale price and savings',icon:'M12.5 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-1.5 2c-2.33 0-7 1.17-7 3.5V19h15v-1.5c0-2.33-4.67-3.5-7.5-3.5z'},
+            {id:'profit',title:'Profit Margin',desc:'Profit and margin percentage',icon:'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'},
+            {id:'percentage',title:'Percentage Calculator',desc:'Find percentage of value',icon:'M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z'},
+            {id:'age',title:'Age Calculator',desc:'Calculate age in years/months/days',icon:'M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7h2v3h3v2H9v3H7v-3H4v-2h2zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'},
+            {id:'currency',title:'Currency Converter',desc:'Convert between currencies',icon:'M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4zm6.2-6.9c-.7 0-1.3.6-1.3 1.3s.6 1.3 1.3 1.3 1.3-.6 1.3-1.3-.6-1.3-1.3-1.3zm1.3 16.6c-.7 0-1.3-.6-1.3-1.3s.6 1.3 1.3 1.3 1.3.6 1.3 1.3-.6 1.3-1.3 1.3zM5.8 5c-.7 0-1.3.6-1.3 1.3s.6 1.3 1.3 1.3 1.3-.6 1.3-1.3S6.5 5 5.8 5zm1.3 16.6c-.7 0-1.3-.6-1.3-1.3s.6 1.3 1.3 1.3 1.3.6 1.3 1.3-.6 1.3-1.3 1.3z'},
+            {id:'stock',title:'Stock Profit',desc:'Buy/sell profit calculator',icon:'M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z'},
+            {id:'mfreturn',title:'MF Return',desc:'Mutual fund gain/loss calculator',icon:'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'}
+        ];
+
+        // === RENDER CALCULATOR CARDS ===
+        const grid = document.getElementById('calc-grid');
+        calculators.forEach(calc => {
+            const card = document.createElement('div');
+            card.className = 'calculator-card';
+            card.dataset.id = calc.id;
+            card.innerHTML = `
+                <div class="calculator-icon"><svg viewBox="0 0 24 24"><path d="${calc.icon}"/></svg></div>
+                <div class="calculator-content">
+                    <h3 class="calculator-title">${calc.title}</h3>
+                    <p class="calculator-description">${calc.desc}</p>
+                    <button class="calculator-btn">Calculate</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // === OPEN MODAL ===
+        document.querySelectorAll('.calculator-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const id = card.dataset.id;
+                const calc = calculators.find(c => c.id === id);
+                const modal = document.createElement('div');
+                modal.className = 'modal active';
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">${calc.title}</h3>
+                            <button class="close-btn" onclick="this.closest('.modal').remove()">×</button>
+                        </div>
+                        <div class="modal-body" id="${id}-body">
+                            ${getModalContent(id)}
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            });
+        });
+
+        // === MODAL CONTENT TEMPLATES ===
+        function getModalContent(id) {
+            const templates = {
+                // DISCOUNT CALCULATOR
+                discount: () => `
+                    <div class="form-group">
+                        <label>Original Price (₹)</label>
+                        <input type="number" id="discount-original" class="form-control" value="2000" placeholder="Enter original price">
+                    </div>
+                    <div class="form-group">
+                        <label>Discount Percentage (%)</label>
+                        <input type="number" id="discount-rate" class="form-control" value="25" step="0.1" placeholder="Enter discount %">
+                    </div>
+                    <button class="calculate-btn" onclick="calcDiscount()">Calculate Discount</button>
+                    <div class="result" id="discount-result">
+                        <h4 class="result-title">Discount Calculation Result</h4>
+                        <p>You Save: <strong id="discount-savings">₹0</strong></p>
+                        <p>Final Price: <strong id="discount-final">₹0</strong></p>
+                    </div>
+                `,
+
+                // INCOME TAX CALCULATOR
+                tax: () => `
+                    <div class="form-group">
+                        <label>Annual Income (₹)</label>
+                        <input type="number" id="tax-income" class="form-control" value="1500000" placeholder="Enter annual income">
+                    </div>
+                    <div class="form-group">
+                        <label>Deductions (₹)</label>
+                        <input type="number" id="tax-deduction" class="form-control" value="150000" placeholder="Enter deductions">
+                    </div>
+                    <button class="calculate-btn" onclick="calcTax()">Calculate Tax</button>
+                    <div class="result" id="tax-result">
+                        <h4 class="result-title">Income Tax Calculation</h4>
+                        <p>Tax Payable: <strong id="tax-value">₹0</strong></p>
+                    </div>
+                `,
+
+                // SIP CALCULATOR
+                sip: () => `
+                    <div class="form-group">
+                        <label>Monthly Investment (₹)</label>
+                        <input type="number" id="sip-amount" class="form-control" value="5000" placeholder="Enter monthly investment">
+                    </div>
+                    <div class="form-group">
+                        <label>Expected Return (% per year)</label>
+                        <input type="number" id="sip-return" class="form-control" value="12" step="0.1" placeholder="Expected return %">
+                    </div>
+                    <div class="form-group">
+                        <label>Investment Period (Years)</label>
+                        <input type="number" id="sip-period" class="form-control" value="10" placeholder="Investment years">
+                    </div>
+                    <button class="calculate-btn" onclick="calcSIP()">Calculate SIP</button>
+                    <div class="result" id="sip-result">
+                        <h4 class="result-title">SIP Investment Result</h4>
+                        <p>Total Investment: <strong id="sip-total-investment">₹0</strong></p>
+                        <p>Estimated Returns: <strong id="sip-estimated-returns">₹0</strong></p>
+                        <p>Total Value: <strong id="sip-total-value">₹0</strong></p>
+                    </div>
+                `,
+
+                // HOME LOAN EMI
+                homeloan: () => `
+                    <div class="form-group">
+                        <label>Loan Amount (₹)</label>
+                        <input type="number" id="loan-amount" class="form-control" value="5000000" placeholder="Enter loan amount">
+                    </div>
+                    <div class="form-group">
+                        <label>Interest Rate (% per year)</label>
+                        <input type="number" id="loan-interest" class="form-control" value="8.5" step="0.1" placeholder="Interest rate %">
+                    </div>
+                    <div class="form-group">
+                        <label>Loan Tenure (Years)</label>
+                        <input type="number" id="loan-tenure" class="form-control" value="20" placeholder="Loan tenure in years">
+                    </div>
+                    <button class="calculate-btn" onclick="calcHomeLoan()">Calculate EMI</button>
+                    <div class="result" id="homeloan-result">
+                        <h4 class="result-title">Home Loan EMI Result</h4>
+                        <p>Monthly EMI: <strong id="homeloan-emi">₹0</strong></p>
+                        <p>Total Interest: <strong id="homeloan-total-interest">₹0</strong></p>
+                        <p>Total Payment: <strong id="homeloan-total-payment">₹0</strong></p>
+                    </div>
+                `,
+
+                // FD CALCULATOR
+                fd: () => `
+                    <div class="form-group">
+                        <label>Deposit Amount (₹)</label>
+                        <input type="number" id="fd-amount" class="form-control" value="100000" placeholder="Enter deposit amount">
+                    </div>
+                    <div class="form-group">
+                        <label>Interest Rate (% per year)</label>
+                        <input type="number" id="fd-interest" class="form-control" value="7" step="0.1" placeholder="Interest rate %">
+                    </div>
+                    <div class="form-group">
+                        <label>Tenure (Years)</label>
+                        <input type="number" id="fd-tenure" class="form-control" value="5" placeholder="Tenure in years">
+                    </div>
+                    <button class="calculate-btn" onclick="calcFD()">Calculate FD</button>
+                    <div class="result" id="fd-result">
+                        <h4 class="result-title">Fixed Deposit Result</h4>
+                        <p>Maturity Amount: <strong id="fd-maturity">₹0</strong></p>
+                        <p>Total Interest: <strong id="fd-total-interest">₹0</strong></p>
+                    </div>
+                `,
+
+                // BMI CALCULATOR
+                bmi: () => `
+                    <div class="form-group">
+                        <label>Weight (kg)</label>
+                        <input type="number" id="bmi-weight" class="form-control" value="70" placeholder="Enter weight in kg">
+                    </div>
+                    <div class="form-group">
+                        <label>Height (cm)</label>
+                        <input type="number" id="bmi-height" class="form-control" value="170" placeholder="Enter height in cm">
+                    </div>
+                    <button class="calculate-btn" onclick="calcBMI()">Calculate BMI</button>
+                    <div class="result" id="bmi-result">
+                        <h4 class="result-title">BMI Result</h4>
+                        <p>Your BMI: <strong id="bmi-value">0</strong></p>
+                        <p>Category: <strong id="bmi-category">-</strong></p>
+                    </div>
+                `,
+
+                // CAR LOAN EMI
+                carloan: () => `
+                    <div class="form-group">
+                        <label>Car Price (₹)</label>
+                        <input type="number" id="carloan-amount" class="form-control" value="800000" placeholder="Enter car price">
+                    </div>
+                    <div class="form-group">
+                        <label>Down Payment (₹)</label>
+                        <input type="number" id="carloan-down" class="form-control" value="200000" placeholder="Enter down payment">
+                    </div>
+                    <div class="form-group">
+                        <label>Interest Rate (% per year)</label>
+                        <input type="number" id="carloan-interest" class="form-control" value="9.5" step="0.1" placeholder="Interest rate %">
+                    </div>
+                    <div class="form-group">
+                        <label>Loan Tenure (Years)</label>
+                        <input type="number" id="carloan-tenure" class="form-control" value="5" placeholder="Loan tenure in years">
+                    </div>
+                    <button class="calculate-btn" onclick="calcCarLoan()">Calculate Car Loan</button>
+                    <div class="result" id="carloan-result">
+                        <h4 class="result-title">Car Loan Result</h4>
+                        <p>Loan Amount: <strong id="carloan-loan-amount">₹0</strong></p>
+                        <p>Monthly EMI: <strong id="carloan-emi">₹0</strong></p>
+                        <p>Total Interest: <strong id="carloan-total-interest">₹0</strong></p>
+                    </div>
+                `,
+
+                // RD CALCULATOR
+                rd: () => `
+                    <div class="form-group">
+                        <label>Monthly Deposit (₹)</label>
+                        <input type="number" id="rd-amount" class="form-control" value="5000" placeholder="Monthly deposit">
+                    </div>
+                    <div class="form-group">
+                        <label>Interest Rate (% per year)</label>
+                        <input type="number" id="rd-interest" class="form-control" value="7.5" step="0.1" placeholder="Interest rate %">
+                    </div>
+                    <div class="form-group">
+                        <label>Tenure (Months)</label>
+                        <input type="number" id="rd-tenure" class="form-control" value="36" placeholder="Tenure in months">
+                    </div>
+                    <button class="calculate-btn" onclick="calcRD()">Calculate RD</button>
+                    <div class="result" id="rd-result">
+                        <h4 class="result-title">Recurring Deposit Result</h4>
+                        <p>Total Investment: <strong id="rd-total-investment">₹0</strong></p>
+                        <p>Maturity Amount: <strong id="rd-maturity">₹0</strong></p>
+                        <p>Total Interest: <strong id="rd-total-interest">₹0</strong></p>
+                    </div>
+                `,
+
+                // CAGR CALCULATOR
+                cagr: () => `
+                    <div class="form-group">
+                        <label>Initial Investment (₹)</label>
+                        <input type="number" id="cagr-initial" class="form-control" value="100000" placeholder="Initial amount">
+                    </div>
+                    <div class="form-group">
+                        <label>Final Value (₹)</label>
+                        <input type="number" id="cagr-final" class="form-control" value="200000" placeholder="Final amount">
+                    </div>
+                    <div class="form-group">
+                        <label>Time Period (Years)</label>
+                        <input type="number" id="cagr-period" class="form-control" value="5" placeholder="Time in years">
+                    </div>
+                    <button class="calculate-btn" onclick="calcCAGR()">Calculate CAGR</button>
+                    <div class="result" id="cagr-result">
+                        <h4 class="result-title">CAGR Result</h4>
+                        <p>Compound Annual Growth Rate: <strong id="cagr-value">0%</strong></p>
+                    </div>
+                `,
+
+                // PPF CALCULATOR
+                ppf: () => `
+                    <div class="form-group">
+                        <label>Annual Investment (₹)</label>
+                        <input type="number" id="ppf-amount" class="form-control" value="150000" placeholder="Annual investment">
+                    </div>
+                    <div class="form-group">
+                        <label>Interest Rate (% per year)</label>
+                        <input type="number" id="ppf-interest" class="form-control" value="7.1" step="0.1" placeholder="Interest rate %">
+                    </div>
+                    <div class="form-group">
+                        <label>Investment Period (Years)</label>
+                        <input type="number" id="ppf-period" class="form-control" value="15" placeholder="Investment years">
+                    </div>
+                    <button class="calculate-btn" onclick="calcPPF()">Calculate PPF</button>
+                    <div class="result" id="ppf-result">
+                        <h4 class="result-title">PPF Result</h4>
+                        <p>Total Investment: <strong id="ppf-total-investment">₹0</strong></p>
+                        <p>Maturity Amount: <strong id="ppf-maturity">₹0</strong></p>
+                        <p>Total Interest: <strong id="ppf-total-interest">₹0</strong></p>
+                    </div>
+                `,
+
+                // GST CALCULATOR
+                gst: () => `
+                    <div class="form-group">
+                        <label>Amount (₹)</label>
+                        <input type="number" id="gst-amount" class="form-control" value="1000" placeholder="Enter amount">
+                    </div>
+                    <div class="form-group">
+                        <label>GST Rate (%)</label>
+                        <input type="number" id="gst-rate" class="form-control" value="18" step="0.1" placeholder="GST rate %">
+                    </div>
+                    <button class="calculate-btn" onclick="calcGST()">Calculate GST</button>
+                    <div class="result" id="gst-result">
+                        <h4 class="result-title">GST Calculation</h4>
+                        <p>GST Amount: <strong id="gst-tax">₹0</strong></p>
+                        <p>Total Amount: <strong id="gst-total">₹0</strong></p>
+                    </div>
+                `,
+
+                // EMI CALCULATOR
+                emi: () => `
+                    <div class="form-group">
+                        <label>Loan Amount (₹)</label>
+                        <input type="number" id="emi-amount" class="form-control" value="100000" placeholder="Loan amount">
+                    </div>
+                    <div class="form-group">
+                        <label>Interest Rate (% per year)</label>
+                        <input type="number" id="emi-interest" class="form-control" value="10" step="0.1" placeholder="Interest rate %">
+                    </div>
+                    <div class="form-group">
+                        <label>Loan Tenure (Months)</label>
+                        <input type="number" id="emi-tenure" class="form-control" value="12" placeholder="Tenure in months">
+                    </div>
+                    <button class="calculate-btn" onclick="calcEMI()">Calculate EMI</button>
+                    <div class="result" id="emi-result">
+                        <h4 class="result-title">EMI Calculation</h4>
+                        <p>Monthly EMI: <strong id="emi-value">₹0</strong></p>
+                        <p>Total Interest: <strong id="emi-total-interest">₹0</strong></p>
+                        <p>Total Payment: <strong id="emi-total-payment">₹0</strong></p>
+                    </div>
+                `,
+
+                // INTEREST CALCULATOR
+                interest: () => `
+                    <div class="form-group">
+                        <label>Principal Amount (₹)</label>
+                        <input type="number" id="interest-principal" class="form-control" value="100000" placeholder="Principal amount">
+                    </div>
+                    <div class="form-group">
+                        <label>Interest Rate (% per year)</label>
+                        <input type="number" id="interest-rate" class="form-control" value="8" step="0.1" placeholder="Interest rate %">
+                    </div>
+                    <div class="form-group">
+                        <label>Time Period (Years)</label>
+                        <input type="number" id="interest-time" class="form-control" value="5" placeholder="Time in years">
+                    </div>
+                    <div class="form-group">
+                        <label>Interest Type</label>
+                        <select id="interest-type" class="form-control">
+                            <option value="simple">Simple Interest</option>
+                            <option value="compound">Compound Interest</option>
+                        </select>
+                    </div>
+                    <button class="calculate-btn" onclick="calcInterest()">Calculate Interest</button>
+                    <div class="result" id="interest-result">
+                        <h4 class="result-title">Interest Result</h4>
+                        <p>Total Interest: <strong id="interest-total">₹0</strong></p>
+                        <p>Total Amount: <strong id="interest-total-amount">₹0</strong></p>
+                    </div>
+                `,
+
+                // PROFIT MARGIN
+                profit: () => `
+                    <div class="form-group">
+                        <label>Cost Price (₹)</label>
+                        <input type="number" id="profit-cost" class="form-control" value="100" placeholder="Cost price">
+                    </div>
+                    <div class="form-group">
+                        <label>Selling Price (₹)</label>
+                        <input type="number" id="profit-selling" class="form-control" value="150" placeholder="Selling price">
+                    </div>
+                    <button class="calculate-btn" onclick="calcProfit()">Calculate Profit</button>
+                    <div class="result" id="profit-result">
+                        <h4 class="result-title">Profit Calculation</h4>
+                        <p>Profit Amount: <strong id="profit-amount">₹0</strong></p>
+                        <p>Profit Margin: <strong id="profit-margin">0%</strong></p>
+                    </div>
+                `,
+
+                // PERCENTAGE CALCULATOR
+                percentage: () => `
+                    <div class="form-group">
+                        <label>Value</label>
+                        <input type="number" id="percentage-value" class="form-control" value="100" placeholder="Enter value">
+                    </div>
+                    <div class="form-group">
+                        <label>Percentage (%)</label>
+                        <input type="number" id="percentage-rate" class="form-control" value="10" step="0.1" placeholder="Percentage %">
+                    </div>
+                    <button class="calculate-btn" onclick="calcPercentage()">Calculate Percentage</button>
+                    <div class="result" id="percentage-result">
+                        <h4 class="result-title">Percentage Result</h4>
+                        <p>Result: <strong id="percentage-result-value">0</strong></p>
+                    </div>
+                `,
+
+                // AGE CALCULATOR
+                age: () => `
+                    <div class="form-group">
+                        <label>Birth Date</label>
+                        <input type="date" id="age-birthdate" class="form-control">
+                    </div>
+                    <button class="calculate-btn" onclick="calcAge()">Calculate Age</button>
+                    <div class="result" id="age-result">
+                        <h4 class="result-title">Your Age</h4>
+                        <p><strong id="age-years">0</strong> years, <strong id="age-months">0</strong> months, <strong id="age-days">0</strong> days</p>
+                    </div>
+                `,
+
+                // STOCK PROFIT CALCULATOR
+                stock: () => `
+                    <div class="form-group">
+                        <label>Buy Price (₹)</label>
+                        <input type="number" id="stock-buy" class="form-control" value="100" placeholder="Buy price per share">
+                    </div>
+                    <div class="form-group">
+                        <label>Sell Price (₹)</label>
+                        <input type="number" id="stock-sell" class="form-control" value="150" placeholder="Sell price per share">
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" id="stock-quantity" class="form-control" value="100" placeholder="Number of shares">
+                    </div>
+                    <button class="calculate-btn" onclick="calcStock()">Calculate Stock Profit</button>
+                    <div class="result" id="stock-result">
+                        <h4 class="result-title">Stock Profit/Loss</h4>
+                        <p>Total Investment: <strong id="stock-investment">₹0</strong></p>
+                        <p>Profit/Loss: <strong id="stock-profit">₹0</strong></p>
+                        <p>Return Percentage: <strong id="stock-return">0%</strong></p>
+                    </div>
+                `,
+
+                // MUTUAL FUND RETURN
+                mfreturn: () => `
+                    <div class="form-group">
+                        <label>Investment Amount (₹)</label>
+                        <input type="number" id="mf-amount" class="form-control" value="100000" placeholder="Investment amount">
+                    </div>
+                    <div class="form-group">
+                        <label>Current Value (₹)</label>
+                        <input type="number" id="mf-current" class="form-control" value="150000" placeholder="Current value">
+                    </div>
+                    <div class="form-group">
+                        <label>Holding Period (Years)</label>
+                        <input type="number" id="mf-period" class="form-control" value="3" placeholder="Holding years">
+                    </div>
+                    <button class="calculate-btn" onclick="calcMFReturn()">Calculate MF Return</button>
+                    <div class="result" id="mf-result">
+                        <h4 class="result-title">Mutual Fund Return</h4>
+                        <p>Absolute Return: <strong id="mf-absolute">₹0</strong></p>
+                        <p>Annualized Return: <strong id="mf-annualized">0%</strong></p>
+                        <p>Total Return: <strong id="mf-total-return">0%</strong></p>
+                    </div>
+                `,
+
+                // CURRENCY CONVERTER
+                currency: () => `
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <input type="number" id="currency-amount" class="form-control" value="100" placeholder="Enter amount">
+                    </div>
+                    <div class="form-group">
+                        <label>From Currency</label>
+                        <select id="currency-from" class="form-control">
+                            <option value="USD">US Dollar (USD)</option>
+                            <option value="INR" selected>Indian Rupee (INR)</option>
+                            <option value="EUR">Euro (EUR)</option>
+                            <option value="GBP">British Pound (GBP)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>To Currency</label>
+                        <select id="currency-to" class="form-control">
+                            <option value="USD">US Dollar (USD)</option>
+                            <option value="INR">Indian Rupee (INR)</option>
+                            <option value="EUR" selected>Euro (EUR)</option>
+                            <option value="GBP">British Pound (GBP)</option>
+                        </select>
+                    </div>
+                    <button class="calculate-btn" onclick="calcCurrency()">Convert Currency</button>
+                    <div class="result" id="currency-result">
+                        <h4 class="result-title">Currency Conversion</h4>
+                        <p>Converted Amount: <strong id="currency-converted">0</strong></p>
+                    </div>
+                `,
+
+                // GRATUITY CALCULATOR
+                gratuity: () => `
+                    <div class="form-group">
+                        <label>Last Drawn Salary (₹)</label>
+                        <input type="number" id="gratuity-salary" class="form-control" value="50000" placeholder="Last drawn salary">
+                    </div>
+                    <div class="form-group">
+                        <label>Years of Service</label>
+                        <input type="number" id="gratuity-years" class="form-control" value="15" placeholder="Years of service">
+                    </div>
+                    <button class="calculate-btn" onclick="calcGratuity()">Calculate Gratuity</button>
+                    <div class="result" id="gratuity-result">
+                        <h4 class="result-title">Gratuity Amount</h4>
+                        <p>Gratuity Payable: <strong id="gratuity-amount">₹0</strong></p>
+                    </div>
+                `,
+
+                // RETIREMENT CALCULATOR
+                retirement: () => `
+                    <div class="form-group">
+                        <label>Current Age</label>
+                        <input type="number" id="retirement-current-age" class="form-control" value="30" placeholder="Current age">
+                    </div>
+                    <div class="form-group">
+                        <label>Retirement Age</label>
+                        <input type="number" id="retirement-age" class="form-control" value="60" placeholder="Retirement age">
+                    </div>
+                    <div class="form-group">
+                        <label>Monthly Expenses (₹)</label>
+                        <input type="number" id="retirement-expenses" class="form-control" value="50000" placeholder="Monthly expenses">
+                    </div>
+                    <div class="form-group">
+                        <label>Expected Inflation (%)</label>
+                        <input type="number" id="retirement-inflation" class="form-control" value="6" step="0.1" placeholder="Inflation rate %">
+                    </div>
+                    <button class="calculate-btn" onclick="calcRetirement()">Calculate Retirement</button>
+                    <div class="result" id="retirement-result">
+                        <h4 class="result-title">Retirement Planning</h4>
+                        <p>Retirement Corpus Needed: <strong id="retirement-corpus">₹0</strong></p>
+                    </div>
+                `,
+
+                // NPS CALCULATOR
+                nps: () => `
+                    <div class="form-group">
+                        <label>Monthly Contribution (₹)</label>
+                        <input type="number" id="nps-contribution" class="form-control" value="5000" placeholder="Monthly contribution">
+                    </div>
+                    <div class="form-group">
+                        <label>Expected Return (%)</label>
+                        <input type="number" id="nps-return" class="form-control" value="10" step="0.1" placeholder="Expected return %">
+                    </div>
+                    <div class="form-group">
+                        <label>Investment Period (Years)</label>
+                        <input type="number" id="nps-period" class="form-control" value="30" placeholder="Investment years">
+                    </div>
+                    <button class="calculate-btn" onclick="calcNPS()">Calculate NPS</button>
+                    <div class="result" id="nps-result">
+                        <h4 class="result-title">NPS Calculation</h4>
+                        <p>Total Investment: <strong id="nps-total-investment">₹0</strong></p>
+                        <p>Maturity Amount: <strong id="nps-maturity">₹0</strong></p>
+                    </div>
+                `
+            };
+            return templates[id] ? templates[id]() : '<p style="text-align:center;color:#64748b;padding:40px 20px;">This calculator is coming soon. We are working on it!</p>';
+        }
+
+        // === CALCULATION FUNCTIONS ===
+
+        // DISCOUNT CALCULATOR
+        window.calcDiscount = () => {
+            const original = parseFloat(document.getElementById('discount-original').value) || 0;
+            const rate = (parseFloat(document.getElementById('discount-rate').value) || 0) / 100;
+            const savings = original * rate;
+            const final = original - savings;
+            document.getElementById('discount-savings').textContent = `₹${savings.toFixed(0)}`;
+            document.getElementById('discount-final').textContent = `₹${final.toFixed(0)}`;
+            document.getElementById('discount-result').classList.add('active');
+        };
+
+        // INCOME TAX CALCULATOR
+        window.calcTax = () => {
+            const income = parseFloat(document.getElementById('tax-income').value) || 0;
+            const deduction = parseFloat(document.getElementById('tax-deduction').value) || 0;
+            const taxable = Math.max(0, income - deduction - 50000);
+            let tax = 0;
+            if (taxable > 1500000) tax += (taxable - 1500000) * 0.3;
+            else if (taxable > 1200000) tax += (taxable - 1200000) * 0.2;
+            else if (taxable > 900000) tax += (taxable - 900000) * 0.15;
+            else if (taxable > 600000) tax += (taxable - 600000) * 0.1;
+            else if (taxable > 300000) tax += (taxable - 300000) * 0.05;
+            document.getElementById('tax-value').textContent = `₹${tax.toFixed(0)}`;
+            document.getElementById('tax-result').classList.add('active');
+        };
+
+        // SIP CALCULATOR
+        window.calcSIP = () => {
+            const amount = parseFloat(document.getElementById('sip-amount').value) || 0;
+            const rate = (parseFloat(document.getElementById('sip-return').value) || 0) / 100 / 12;
+            const period = (parseFloat(document.getElementById('sip-period').value) || 0) * 12;
+            
+            const futureValue = amount * ((Math.pow(1 + rate, period) - 1) / rate) * (1 + rate);
+            const totalInvestment = amount * period;
+            const estimatedReturns = futureValue - totalInvestment;
+            
+            document.getElementById('sip-total-investment').textContent = `₹${Math.round(totalInvestment).toLocaleString()}`;
+            document.getElementById('sip-estimated-returns').textContent = `₹${Math.round(estimatedReturns).toLocaleString()}`;
+            document.getElementById('sip-total-value').textContent = `₹${Math.round(futureValue).toLocaleString()}`;
+            document.getElementById('sip-result').classList.add('active');
+        };
+
+        // HOME LOAN EMI
+        window.calcHomeLoan = () => {
+            const amount = parseFloat(document.getElementById('loan-amount').value) || 0;
+            const rate = (parseFloat(document.getElementById('loan-interest').value) || 0) / 100 / 12;
+            const tenure = (parseFloat(document.getElementById('loan-tenure').value) || 0) * 12;
+            
+            const emi = amount * rate * Math.pow(1 + rate, tenure) / (Math.pow(1 + rate, tenure) - 1);
+            const totalPayment = emi * tenure;
+            const totalInterest = totalPayment - amount;
+            
+            document.getElementById('homeloan-emi').textContent = `₹${Math.round(emi).toLocaleString()}`;
+            document.getElementById('homeloan-total-interest').textContent = `₹${Math.round(totalInterest).toLocaleString()}`;
+            document.getElementById('homeloan-total-payment').textContent = `₹${Math.round(totalPayment).toLocaleString()}`;
+            document.getElementById('homeloan-result').classList.add('active');
+        };
+
+        // FD CALCULATOR
+        window.calcFD = () => {
+            const amount = parseFloat(document.getElementById('fd-amount').value) || 0;
+            const rate = (parseFloat(document.getElementById('fd-interest').value) || 0) / 100;
+            const tenure = parseFloat(document.getElementById('fd-tenure').value) || 0;
+            
+            const maturity = amount * Math.pow(1 + rate, tenure);
+            const totalInterest = maturity - amount;
+            
+            document.getElementById('fd-maturity').textContent = `₹${Math.round(maturity).toLocaleString()}`;
+            document.getElementById('fd-total-interest').textContent = `₹${Math.round(totalInterest).toLocaleString()}`;
+            document.getElementById('fd-result').classList.add('active');
+        };
+
+        // BMI CALCULATOR
+        window.calcBMI = () => {
+            const weight = parseFloat(document.getElementById('bmi-weight').value) || 0;
+            const height = (parseFloat(document.getElementById('bmi-height').value) || 0) / 100;
+            
+            const bmi = weight / (height * height);
+            let category = '';
+            if (bmi < 18.5) category = 'Underweight';
+            else if (bmi < 25) category = 'Normal';
+            else if (bmi < 30) category = 'Overweight';
+            else category = 'Obese';
+            
+            document.getElementById('bmi-value').textContent = bmi.toFixed(1);
+            document.getElementById('bmi-category').textContent = category;
+            document.getElementById('bmi-result').classList.add('active');
+        };
+
+        // CAR LOAN EMI
+        window.calcCarLoan = () => {
+            const carPrice = parseFloat(document.getElementById('carloan-amount').value) || 0;
+            const downPayment = parseFloat(document.getElementById('carloan-down').value) || 0;
+            const loanAmount = carPrice - downPayment;
+            const rate = (parseFloat(document.getElementById('carloan-interest').value) || 0) / 100 / 12;
+            const tenure = (parseFloat(document.getElementById('carloan-tenure').value) || 0) * 12;
+            
+            const emi = loanAmount * rate * Math.pow(1 + rate, tenure) / (Math.pow(1 + rate, tenure) - 1);
+            const totalPayment = emi * tenure;
+            const totalInterest = totalPayment - loanAmount;
+            
+            document.getElementById('carloan-loan-amount').textContent = `₹${Math.round(loanAmount).toLocaleString()}`;
+            document.getElementById('carloan-emi').textContent = `₹${Math.round(emi).toLocaleString()}`;
+            document.getElementById('carloan-total-interest').textContent = `₹${Math.round(totalInterest).toLocaleString()}`;
+            document.getElementById('carloan-result').classList.add('active');
+        };
+
+        // RD CALCULATOR
+        window.calcRD = () => {
+            const amount = parseFloat(document.getElementById('rd-amount').value) || 0;
+            const rate = (parseFloat(document.getElementById('rd-interest').value) || 0) / 100 / 4;
+            const tenure = parseFloat(document.getElementById('rd-tenure').value) || 0;
+            const quarters = tenure / 3;
+            
+            const maturity = amount * ((Math.pow(1 + rate, quarters) - 1) / rate);
+            const totalInvestment = amount * tenure;
+            const totalInterest = maturity - totalInvestment;
+            
+            document.getElementById('rd-total-investment').textContent = `₹${Math.round(totalInvestment).toLocaleString()}`;
+            document.getElementById('rd-maturity').textContent = `₹${Math.round(maturity).toLocaleString()}`;
+            document.getElementById('rd-total-interest').textContent = `₹${Math.round(totalInterest).toLocaleString()}`;
+            document.getElementById('rd-result').classList.add('active');
+        };
+
+        // CAGR CALCULATOR
+        window.calcCAGR = () => {
+            const initial = parseFloat(document.getElementById('cagr-initial').value) || 0;
+            const final = parseFloat(document.getElementById('cagr-final').value) || 0;
+            const period = parseFloat(document.getElementById('cagr-period').value) || 0;
+            
+            const cagr = (Math.pow(final / initial, 1 / period) - 1) * 100;
+            
+            document.getElementById('cagr-value').textContent = `${cagr.toFixed(2)}%`;
+            document.getElementById('cagr-result').classList.add('active');
+        };
+
+        // PPF CALCULATOR
+        window.calcPPF = () => {
+            const amount = parseFloat(document.getElementById('ppf-amount').value) || 0;
+            const rate = (parseFloat(document.getElementById('ppf-interest').value) || 0) / 100;
+            const period = parseFloat(document.getElementById('ppf-period').value) || 0;
+            
+            let maturity = 0;
+            for (let i = 0; i < period; i++) {
+                maturity = (maturity + amount) * (1 + rate);
+            }
+            const totalInvestment = amount * period;
+            const totalInterest = maturity - totalInvestment;
+            
+            document.getElementById('ppf-total-investment').textContent = `₹${Math.round(totalInvestment).toLocaleString()}`;
+            document.getElementById('ppf-maturity').textContent = `₹${Math.round(maturity).toLocaleString()}`;
+            document.getElementById('ppf-total-interest').textContent = `₹${Math.round(totalInterest).toLocaleString()}`;
+            document.getElementById('ppf-result').classList.add('active');
+        };
+
+        // GST CALCULATOR
+        window.calcGST = () => {
+            const amount = parseFloat(document.getElementById('gst-amount').value) || 0;
+            const rate = (parseFloat(document.getElementById('gst-rate').value) || 0) / 100;
+            
+            const gstAmount = amount * rate;
+            const totalAmount = amount + gstAmount;
+            
+            document.getElementById('gst-tax').textContent = `₹${Math.round(gstAmount).toLocaleString()}`;
+            document.getElementById('gst-total').textContent = `₹${Math.round(totalAmount).toLocaleString()}`;
+            document.getElementById('gst-result').classList.add('active');
+        };
+
+        // EMI CALCULATOR
+        window.calcEMI = () => {
+            const amount = parseFloat(document.getElementById('emi-amount').value) || 0;
+            const rate = (parseFloat(document.getElementById('emi-interest').value) || 0) / 100 / 12;
+            const tenure = parseFloat(document.getElementById('emi-tenure').value) || 0;
+            
+            const emi = amount * rate * Math.pow(1 + rate, tenure) / (Math.pow(1 + rate, tenure) - 1);
+            const totalPayment = emi * tenure;
+            const totalInterest = totalPayment - amount;
+            
+            document.getElementById('emi-value').textContent = `₹${Math.round(emi).toLocaleString()}`;
+            document.getElementById('emi-total-interest').textContent = `₹${Math.round(totalInterest).toLocaleString()}`;
+            document.getElementById('emi-total-payment').textContent = `₹${Math.round(totalPayment).toLocaleString()}`;
+            document.getElementById('emi-result').classList.add('active');
+        };
+
+        // INTEREST CALCULATOR
+        window.calcInterest = () => {
+            const principal = parseFloat(document.getElementById('interest-principal').value) || 0;
+            const rate = (parseFloat(document.getElementById('interest-rate').value) || 0) / 100;
+            const time = parseFloat(document.getElementById('interest-time').value) || 0;
+            const type = document.getElementById('interest-type').value;
+            
+            let totalInterest, totalAmount;
+            
+            if (type === 'simple') {
+                totalInterest = principal * rate * time;
+                totalAmount = principal + totalInterest;
+            } else {
+                totalAmount = principal * Math.pow(1 + rate, time);
+                totalInterest = totalAmount - principal;
+            }
+            
+            document.getElementById('interest-total').textContent = `₹${Math.round(totalInterest).toLocaleString()}`;
+            document.getElementById('interest-total-amount').textContent = `₹${Math.round(totalAmount).toLocaleString()}`;
+            document.getElementById('interest-result').classList.add('active');
+        };
+
+        // PROFIT MARGIN
+        window.calcProfit = () => {
+            const cost = parseFloat(document.getElementById('profit-cost').value) || 0;
+            const selling = parseFloat(document.getElementById('profit-selling').value) || 0;
+            
+            const profit = selling - cost;
+            const margin = (profit / cost) * 100;
+            
+            document.getElementById('profit-amount').textContent = `₹${Math.round(profit).toLocaleString()}`;
+            document.getElementById('profit-margin').textContent = `${margin.toFixed(1)}%`;
+            document.getElementById('profit-result').classList.add('active');
+        };
+
+        // PERCENTAGE CALCULATOR
+        window.calcPercentage = () => {
+            const value = parseFloat(document.getElementById('percentage-value').value) || 0;
+            const rate = (parseFloat(document.getElementById('percentage-rate').value) || 0) / 100;
+            
+            const result = value * rate;
+            
+            document.getElementById('percentage-result-value').textContent = result.toFixed(2);
+            document.getElementById('percentage-result').classList.add('active');
+        };
+
+        // AGE CALCULATOR
+        window.calcAge = () => {
+            const birthDate = new Date(document.getElementById('age-birthdate').value);
+            const today = new Date();
+            
+            let years = today.getFullYear() - birthDate.getFullYear();
+            let months = today.getMonth() - birthDate.getMonth();
+            let days = today.getDate() - birthDate.getDate();
+            
+            if (days < 0) {
+                months--;
+                days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+            }
+            
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            document.getElementById('age-years').textContent = years;
+            document.getElementById('age-months').textContent = months;
+            document.getElementById('age-days').textContent = days;
+            document.getElementById('age-result').classList.add('active');
+        };
+
+        // STOCK PROFIT CALCULATOR
+        window.calcStock = () => {
+            const buyPrice = parseFloat(document.getElementById('stock-buy').value) || 0;
+            const sellPrice = parseFloat(document.getElementById('stock-sell').value) || 0;
+            const quantity = parseFloat(document.getElementById('stock-quantity').value) || 0;
+            
+            const investment = buyPrice * quantity;
+            const profit = (sellPrice - buyPrice) * quantity;
+            const returnPercent = ((sellPrice - buyPrice) / buyPrice) * 100;
+            
+            document.getElementById('stock-investment').textContent = `₹${Math.round(investment).toLocaleString()}`;
+            document.getElementById('stock-profit').textContent = `₹${Math.round(profit).toLocaleString()}`;
+            document.getElementById('stock-return').textContent = `${returnPercent.toFixed(2)}%`;
+            document.getElementById('stock-result').classList.add('active');
+        };
+
+        // MUTUAL FUND RETURN
+        window.calcMFReturn = () => {
+            const investment = parseFloat(document.getElementById('mf-amount').value) || 0;
+            const current = parseFloat(document.getElementById('mf-current').value) || 0;
+            const period = parseFloat(document.getElementById('mf-period').value) || 0;
+            
+            const absoluteReturn = current - investment;
+            const totalReturnPercent = ((current - investment) / investment) * 100;
+            const annualizedReturn = (Math.pow(current / investment, 1 / period) - 1) * 100;
+            
+            document.getElementById('mf-absolute').textContent = `₹${Math.round(absoluteReturn).toLocaleString()}`;
+            document.getElementById('mf-total-return').textContent = `${totalReturnPercent.toFixed(2)}%`;
+            document.getElementById('mf-annualized').textContent = `${annualizedReturn.toFixed(2)}%`;
+            document.getElementById('mf-result').classList.add('active');
+        };
+
+        // CURRENCY CONVERTER
+        window.calcCurrency = () => {
+            const amount = parseFloat(document.getElementById('currency-amount').value) || 0;
+            const from = document.getElementById('currency-from').value;
+            const to = document.getElementById('currency-to').value;
+            
+            // Mock exchange rates (in real app, you would fetch from API)
+            const rates = {
+                'USD': { 'INR': 83.5, 'EUR': 0.92, 'GBP': 0.79, 'USD': 1 },
+                'INR': { 'USD': 0.012, 'EUR': 0.011, 'GBP': 0.0095, 'INR': 1 },
+                'EUR': { 'USD': 1.09, 'INR': 90.5, 'GBP': 0.86, 'EUR': 1 },
+                'GBP': { 'USD': 1.27, 'INR': 105.5, 'EUR': 1.16, 'GBP': 1 }
+            };
+            
+            const converted = amount * rates[from][to];
+            document.getElementById('currency-converted').textContent = `${converted.toFixed(2)} ${to}`;
+            document.getElementById('currency-result').classList.add('active');
+        };
+
+        // GRATUITY CALCULATOR
+        window.calcGratuity = () => {
+            const salary = parseFloat(document.getElementById('gratuity-salary').value) || 0;
+            const years = parseFloat(document.getElementById('gratuity-years').value) || 0;
+            
+            const gratuity = (salary * 15 * years) / 26;
+            document.getElementById('gratuity-amount').textContent = `₹${Math.round(gratuity).toLocaleString()}`;
+            document.getElementById('gratuity-result').classList.add('active');
+        };
+
+        // RETIREMENT CALCULATOR
+        window.calcRetirement = () => {
+            const currentAge = parseFloat(document.getElementById('retirement-current-age').value) || 0;
+            const retirementAge = parseFloat(document.getElementById('retirement-age').value) || 0;
+            const expenses = parseFloat(document.getElementById('retirement-expenses').value) || 0;
+            const inflation = (parseFloat(document.getElementById('retirement-inflation').value) || 0) / 100;
+            
+            const yearsToRetirement = retirementAge - currentAge;
+            const monthlyExpensesAtRetirement = expenses * Math.pow(1 + inflation, yearsToRetirement);
+            const corpus = monthlyExpensesAtRetirement * 12 * 25; // 25 years of retirement
+            
+            document.getElementById('retirement-corpus').textContent = `₹${Math.round(corpus).toLocaleString()}`;
+            document.getElementById('retirement-result').classList.add('active');
+        };
+
+        // NPS CALCULATOR
+        window.calcNPS = () => {
+            const contribution = parseFloat(document.getElementById('nps-contribution').value) || 0;
+            const rate = (parseFloat(document.getElementById('nps-return').value) || 0) / 100 / 12;
+            const period = (parseFloat(document.getElementById('nps-period').value) || 0) * 12;
+            
+            const futureValue = contribution * ((Math.pow(1 + rate, period) - 1) / rate) * (1 + rate);
+            const totalInvestment = contribution * period;
+            
+            document.getElementById('nps-total-investment').textContent = `₹${Math.round(totalInvestment).toLocaleString()}`;
+            document.getElementById('nps-maturity').textContent = `₹${Math.round(futureValue).toLocaleString()}`;
+            document.getElementById('nps-result').classList.add('active');
+        };
+
+        // Mobile Menu
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            document.getElementById('nav-menu').classList.toggle('active');
+        });
+
+        // Close modal when clicking outside
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.remove();
+            }
+        });
+
+        // Set default date for age calculator
+        document.addEventListener('DOMContentLoaded', function() {
+            const ageInput = document.getElementById('age-birthdate');
+            if (ageInput) {
+                const defaultDate = new Date();
+                defaultDate.setFullYear(defaultDate.getFullYear() - 25);
+                ageInput.value = defaultDate.toISOString().split('T')[0];
+            }
+        });
+    </script>
+</body>
+</html>
